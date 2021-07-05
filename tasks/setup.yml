@@ -1,0 +1,15 @@
+---
+- name: Setup | template configuration
+  ansible.builtin.template:
+    dest: "{{ item.dest }}"
+    src: "{{ ansible_distribution | lower }}{{ item.dest + '.j2' }}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+    backup: true
+  loop: "{{ os_service_conf }}"
+  become: true
+  changed_when: true
+  notify:
+    - systemctl restart service
+...

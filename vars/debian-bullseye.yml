@@ -1,0 +1,31 @@
+---
+prereq_pkgs:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - openstack-pkg-tools
+
+# osbpo apt repo keyring
+osbpo_keyring:
+  url: "http://osbpo.debian.net/osbpo/dists/pubkey.gpg"
+  file: "/usr/share/keyrings/osbpo-keyring.gpg"
+
+# osbpo apt repo
+osbpo_repos:
+  - repo: "deb [signed-by=/usr/share/keyrings/osbpo-keyring.gpg] http://osbpo.debian.net/osbpo bullseye-{{ openstack_release }}-backports main"
+    filename: "openstack"
+  - repo: "deb [signed-by=/usr/share/keyrings/osbpo-keyring.gpg] http://osbpo.debian.net/osbpo bullseye-{{ openstack_release }}-backports-nochange main"
+    filename: "openstack"
+
+packages:
+  - apache2
+  - libapache2-mod-wsgi-py3
+  - openstack-dashboard-apache
+
+os_service_conf: 
+  - {dest: "/etc/openstack-dashboard/local_settings.py"}
+  - {dest: "/etc/apache2/apache2.conf"}
+  - {dest: "/etc/apache2/ports.conf"}
+
+os_systemd_service_name: "apache2"
+...

@@ -1,0 +1,6 @@
+---
+openstack_release: "wallaby"
+keepalived_vip: ~
+keystone_port: 5000
+memcached_port: 11211
+...
