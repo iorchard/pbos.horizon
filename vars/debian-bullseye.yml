@@ -27,5 +27,6 @@ os_service_conf:
   - {dest: "/etc/apache2/apache2.conf"}
   - {dest: "/etc/apache2/ports.conf"}
 
-os_systemd_service_name: "apache2"
+os_systemd_service_name:
+  - apache2.service
 ...
