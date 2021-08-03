@@ -15,4 +15,14 @@
     state: absent
   loop: "{{ packages }}"
   become: true
+
+- name: Delete | delete config directory
+  tags:
+    - horizon
+    - openstack
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ os_service_conf }}"
+  become: true
 ...
