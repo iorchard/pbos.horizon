@@ -20,9 +20,9 @@ osbpo_repos:
     filename: "openstack"
 
 packages:
-  - apache2
-  - libapache2-mod-wsgi-py3
+  - openstack-dashboard
   - openstack-dashboard-apache
+  - python3-django-horizon
 
 os_service_conf: 
   - {dest: "/etc/openstack-dashboard/local_settings.py"}

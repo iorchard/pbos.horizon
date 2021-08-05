@@ -16,13 +16,15 @@
   loop: "{{ packages }}"
   become: true
 
-- name: Delete | delete config directory
+- name: Delete | delete directory
   tags:
     - horizon
     - openstack
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
-  loop: "{{ os_service_conf }}"
+  loop:
+    - "/etc/openstack-dashboard"
+    - "/var/lib/openstack-dashboard" 
   become: true
 ...

@@ -84,9 +84,12 @@ LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 # (usually behind a load-balancer). Either you have to make sure that a session
 # gets all requests routed to the same dashboard instance or you set the same
 # SECRET_KEY for all of them.
+{%  if ansible_distribution == "Debian" %}
 SECRET_KEY = secret_key.generate_or_read_from_file(
     os.path.join("/","var","lib","openstack-dashboard","secret-key", '.secret_key_store'))
-
+{% else %}
+SECRET_KEY = secret_key.generate_or_read_from_file('/var/lib/openstack-dashboard/secret_key')
+{% endif %}
 # We recommend you use memcached for development; otherwise after every reload
 # of the django development server, you will have to login again. To use
 # memcached set CACHES to something like below.
@@ -391,3 +394,7 @@ OPENSTACK_API_VERSIONS = {
 OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "Default"
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"
 TIME_ZONE = "Asia/Seoul"
+{% if ansible_distribution == 'Ubuntu' %}
+DEFAULT_THEME = 'ubuntu'
+WEBROOT = '/horizon/'
+{% endif %}
