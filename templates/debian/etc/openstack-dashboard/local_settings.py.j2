@@ -105,7 +105,7 @@ SECRET_KEY = secret_key.generate_or_read_from_file('/var/lib/openstack-dashboard
 # If you use ``tox -e runserver`` for developments,then configure
 # SESSION_ENGINE to django.contrib.sessions.backends.signed_cookies
 # as shown below:
-#SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # Send email to the console by default
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -377,13 +377,13 @@ SECURITY_GROUP_RULES = {
 
 OPENSTACK_HOST = "{{ inventory_hostname }}"
 ALLOWED_HOSTS = [ '*' ]
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-CACHES = {
-    'default': {
-         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-         'LOCATION': '{{ keepalived_vip }}:{{ memcached_port }}',
-    }
-}
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+#CACHES = {
+#    'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '{{ keepalived_vip }}:{{ memcached_port }}',
+#    }
+#}
 OPENSTACK_KEYSTONE_URL = "http://{{ keepalived_vip }}:{{ keystone_port }}/v3"
 OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
 OPENSTACK_API_VERSIONS = {
