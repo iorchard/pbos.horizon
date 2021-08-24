@@ -1,0 +1,20 @@
+---
+pkg_state: "latest"
+prereq_pkgs:
+  - ca-certificates
+  - curl
+
+packages:
+  - openstack-dashboard
+
+openstack_repo_rpm: "https://www.rdoproject.org/repos/rdo-release.el8.rpm"
+
+mariadb_service_socket: "/var/lib/mysql/mysql.sock"
+
+os_service_conf: 
+  - {dest: "/etc/openstack-dashboard/local_settings"}
+  - {dest: "/etc/httpd/conf.d/openstack-dashboard.conf"}
+
+os_systemd_service_name:
+  - httpd.service
+...

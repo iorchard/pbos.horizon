@@ -1,5 +1,5 @@
 ---
-apt_state: "latest"
+pkg_state: "latest"
 prereq_pkgs:
   - apt-transport-https
   - ca-certificates
@@ -23,6 +23,8 @@ packages:
   - openstack-dashboard
   - openstack-dashboard-apache
   - python3-django-horizon
+
+mariadb_service_socket: "/run/mysqld/mysqld.sock"
 
 os_service_conf: 
   - {dest: "/etc/openstack-dashboard/local_settings.py"}
