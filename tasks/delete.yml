@@ -9,9 +9,8 @@
   tags:
     - horizon
     - openstack
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: "{{ item }}"
-    purge: true
     state: absent
   loop: "{{ packages }}"
   become: true
