@@ -14,6 +14,7 @@ mariadb_service_socket: "/var/lib/mysql/mysql.sock"
 os_service_conf: 
   - {dest: "/etc/openstack-dashboard/local_settings"}
   - {dest: "/etc/httpd/conf.d/openstack-dashboard.conf"}
+  - {dest: "/etc/httpd/conf/httpd.conf"}
 
 os_systemd_service_name:
   - httpd.service
