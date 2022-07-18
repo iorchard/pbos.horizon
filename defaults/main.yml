@@ -1,6 +1,6 @@
 ---
 offline: false
-openstack_release: "wallaby"
+openstack_release: "yoga"
 keepalived_vip: ~
 keystone_port: 5000
 memcached_port: 11211
